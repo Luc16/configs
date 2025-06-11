@@ -22,7 +22,8 @@ Plug('saadparwaiz1/cmp_luasnip')  -- Snippet source for nvim-cmp
 Plug('rafamadriz/friendly-snippets') -- A good collection of snippets
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
-Plug('github/copilot.vim')
+Plug("zbirenbaum/copilot.lua")
+Plug("zbirenbaum/copilot-cmp")
 Plug('rmagatti/auto-session')
 
 vim.cmd [[
@@ -44,6 +45,7 @@ require("lua_line_config")
 require("auto_session_config")
 require("treesitter")
 require("lsp_config")
+require("copilot_config") 
 require("cmp_config")
 require("telescope_config")
 require("toggleterm_config")

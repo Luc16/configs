@@ -15,3 +15,6 @@ set fish_cursor_replace_one underscore
 set fish_cursor_external line      # External commands: line cursor
 
 bind \cl ''
+
+set -x QT_QPA_PLATFORM wayland
+
