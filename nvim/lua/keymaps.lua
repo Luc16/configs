@@ -21,6 +21,7 @@ map('n', '<leader>fs', ':Telescope session-lens<CR>', { desc = "Find Session" })
 -- This is the magic keymap to easily exit Terminal mode
 vim.keymap.set('t', '<C-Space>', '<C-\\><C-n><Cmd>ToggleTerm<CR>', { desc = "Exit terminal & toggle (direct)" })
 
+
 -- Copilot keymaps
 -- vim.api.nvim_set_keymap("i", "<leader>l", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
@@ -47,5 +48,6 @@ local function safe_bufferline_prev()
   end
 end
 
-map('n', '<C-S-.>', safe_bufferline_next, { desc = "Next Buffer (Bufferline)" })
-map('n', '<C-S-,>', safe_bufferline_prev, { desc = "Previous Buffer (Bufferline)" })
+vim.keymap.set('n', '<leader>n', ':NvimTreeFindFileToggle<CR>')
+map('n', '<C-N>', safe_bufferline_next, { desc = "Next Buffer (Bufferline)" })
+map('n', '<C-P>', safe_bufferline_prev, { desc = "Previous Buffer (Bufferline)" })

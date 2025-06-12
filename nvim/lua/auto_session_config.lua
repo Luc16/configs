@@ -14,7 +14,16 @@ require('auto-session').setup({
 	auto_session_suppress_dirs = suppressed_dirs,
 	auto_session_use_git_branch = true,
 	pre_restore_cmds = { "BufferlineDisable" },
-	post_restore_cmds = { "BufferlineEnable" },
+	post_restore_cmds = {
+		"BufferlineEnable",
+		function()
+			-- Restore nvim-tree after a session is restored
+			local nvim_tree_api = require('nvim-tree.api')
+			-- nvim_tree_api.tree.open()
+			nvim_tree_api.tree.change_root(vim.fn.getcwd())
+			nvim_tree_api.tree.reload()
+		end
+	},
 	session_lens = {
 		load_on_setup = true,
 		theme_conf = { border = true },
