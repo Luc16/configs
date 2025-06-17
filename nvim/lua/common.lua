@@ -5,6 +5,10 @@ vim.g.mouse = 'a'
 vim.g.mapleader = ' '
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.opt.cmdheight = 2
+vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
+
+vim.cmd("highlight QuickScopePrimary guifg='#FFD700' gui=underline ctermfg=220 cterm=underline")
+vim.cmd("highlight QuickScopeSecondary guifg='#FF00FF' gui=underline ctermfg=201 cterm=underline")
 
 vim.opt.encoding="utf-8"
 vim.opt.swapfile = false

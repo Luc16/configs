@@ -25,6 +25,8 @@ Plug('nvim-telescope/telescope.nvim')
 Plug("zbirenbaum/copilot.lua")
 Plug("zbirenbaum/copilot-cmp")
 Plug('rmagatti/auto-session')
+Plug('unblevable/quick-scope')
+Plug('psliwka/vim-smoothie')
 
 vim.cmd [[
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
@@ -36,16 +38,16 @@ vim.call('plug#end')
 local home = os.getenv("HOME")
 package.path = home .. "/.config/nvim/lua/?.lua;" .. package.path
 
+require("theme")
 require("common")
 require("keymaps")
-require("theme")
 require("vimtree")
 require("bufferline_config")
 require("lua_line_config")
 require("auto_session_config")
 require("treesitter")
 require("lsp_config")
-require("copilot_config") 
+require("copilot_config")
 require("cmp_config")
 require("telescope_config")
 require("toggleterm_config")
