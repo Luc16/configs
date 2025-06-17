@@ -49,5 +49,5 @@ local function safe_bufferline_prev()
 end
 
 vim.keymap.set('n', '<leader>n', ':NvimTreeFindFileToggle<CR>')
-map('n', '<C-N>', safe_bufferline_next, { desc = "Next Buffer (Bufferline)" })
-map('n', '<C-P>', safe_bufferline_prev, { desc = "Previous Buffer (Bufferline)" })
+map('n', '<C-M>', safe_bufferline_next, { desc = "Next Buffer (Bufferline)" })
+map('n', '<C-N>', safe_bufferline_prev, { desc = "Previous Buffer (Bufferline)" })
