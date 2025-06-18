@@ -5,6 +5,7 @@ vim.call('plug#begin')
 
 Plug('doums/darcula')
 Plug('kyazdani42/nvim-tree.lua')
+Plug('tpope/vim-surround')
 Plug('kyazdani42/nvim-web-devicons')
 Plug('akinsho/bufferline.nvim')
 Plug('nvim-lualine/lualine.nvim')
