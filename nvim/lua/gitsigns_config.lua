@@ -49,6 +49,18 @@ gitsigns.setup({
 			gs.toggle_word_diff()
 		end
 
+		vim.keymap.set('n', ']h', function()
+			if vim.wo.diff then return ']h' end
+			vim.schedule(function() gs.next_hunk() end)
+			return '<Ignore>'
+		end, {expr = true, buffer = bufnr, desc = "Next Git hunk"}) -- Corrected!
+
+		vim.keymap.set('n', '[h', function()
+			if vim.wo.diff then return '[h' end
+			vim.schedule(function() gs.prev_hunk() end)
+			return '<Ignore>'
+		end, {expr = true, buffer = bufnr, desc = "Previous Git hunk"}) -- Corrected!
+
 		-- Normal mode mappings
 		map('n', '<leader>gs', gs.stage_hunk, "Stage Git hunk")
 		map('n', '<leader>gr', gs.reset_hunk, "Reset Git hunk")
