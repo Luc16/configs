@@ -12,6 +12,7 @@ require("mason-lspconfig").setup({
     "cssls",      -- CSS
     "bashls",     -- Bash
     "marksman",   -- Markdown
+	"texlab",     -- LaTeX
   },
 })
 

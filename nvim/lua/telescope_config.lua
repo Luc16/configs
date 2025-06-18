@@ -47,6 +47,7 @@ telescope.setup({
 
 vim.schedule(function()
     require('telescope').load_extension('session-lens')
+	require('telescope').load_extension('bibtex')
 end)
 -- === Keymaps for triggering Telescope ===
 local builtin = require('telescope.builtin')
@@ -58,3 +59,5 @@ nmap('<leader>ff', builtin.find_files, 'Telescope: Find files')
 nmap('<leader>fg', builtin.live_grep, 'Telescope: Live grep (text in files)')
 nmap('<leader>fb', builtin.buffers, 'Telescope: Find open buffers')
 nmap('<leader>fh', builtin.help_tags, 'Telescope: Find help tags')
+nmap('<leader>fc', telescope.extensions.bibtex.bibtex, 'Telescope: Find BibTeX entries')
+

@@ -4,7 +4,7 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 
 Plug('doums/darcula')
-Plug('kyazdani42/nvim-tree.lua')
+Plug('kyazdani42/nvim-tree.lua')   -- File explorer
 Plug('tpope/vim-surround')
 Plug('kyazdani42/nvim-web-devicons')
 Plug('akinsho/bufferline.nvim')
@@ -23,11 +23,18 @@ Plug('saadparwaiz1/cmp_luasnip')  -- Snippet source for nvim-cmp
 Plug('rafamadriz/friendly-snippets') -- A good collection of snippets
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
+Plug('nvim-telescope/telescope-bibtex.nvim')
 Plug("zbirenbaum/copilot.lua")
 Plug("zbirenbaum/copilot-cmp")
 Plug('rmagatti/auto-session')
 Plug('unblevable/quick-scope')
+Plug('lervag/vimtex') -- LaTeX support
 Plug('psliwka/vim-smoothie')
+Plug('kshenoy/vim-signature')       -- To show marks
+
+-- Git-related plugins
+Plug('tpope/vim-fugitive')          -- For Git integration
+Plug('lewis6991/gitsigns.nvim')      -- To show Git diffs in the sign column
 
 vim.cmd [[
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
@@ -52,6 +59,7 @@ require("copilot_config")
 require("cmp_config")
 require("telescope_config")
 require("toggleterm_config")
+require("gitsigns_config")
 
 print("✅ Configuration loaded!")
 
