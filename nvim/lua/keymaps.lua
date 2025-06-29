@@ -14,12 +14,14 @@ map('n', '<leader>w', ':bd<CR>', opts) -- May not work
 map('n', '<leader>vt', ':hor term<CR>', { desc = "Open vertical terminal" })
 -- Open a new terminal in a horizontal split
 map('n', '<leader>ht', ':vert term<CR>', { desc = "Open horizontal terminal" })
+map('n', '<leader>tt', ':term<CR>', { desc = "Open Terminal Buffer" })
 
 map('n', '<C-Space>', '<Cmd>ToggleTerm<CR>', { desc = "Toggle floating terminal" })
 map('n', '<leader>mp', '<Cmd>MarkdownPreviewToggle<CR>', { desc = "Toggle Markdown Preview" })
 map('n', '<leader>fs', ':Telescope session-lens<CR>', { desc = "Find Session" })
 -- This is the magic keymap to easily exit Terminal mode
 map('t', '<C-Space>', '<C-\\><C-n><Cmd>ToggleTerm<CR>', { desc = "Exit terminal & toggle (direct)" })
+map('t', '<C-n>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
 
 
 -- Copilot keymaps

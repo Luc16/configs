@@ -24,6 +24,7 @@ Plug('rafamadriz/friendly-snippets') -- A good collection of snippets
 Plug('nvim-lua/plenary.nvim')
 Plug('nvim-telescope/telescope.nvim')
 Plug('nvim-telescope/telescope-bibtex.nvim')
+Plug('numToStr/Comment.nvim') -- Commenting plugin
 Plug("zbirenbaum/copilot.lua")
 Plug("zbirenbaum/copilot-cmp")
 Plug('rmagatti/auto-session')
