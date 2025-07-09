@@ -7,14 +7,14 @@ gitsigns.setup({
 	signs = {
 		add = { text = '+' },
 		change = { text = '~' },
-		delete = { text = '' },
+		delete = { text = '-' },
 		topdelete = { text = '▤' },
 		untracked = { text = '┆' },
 	},
 	signs_staged = {
 		add = { text = '+' },
 		change = { text = '~' },
-		delete = { text = '' },
+		delete = { text = '-' },
 		topdelete = { text = '▤' },
 		untracked = { text = '┆' },
 	},

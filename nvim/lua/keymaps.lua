@@ -50,8 +50,23 @@ local function safe_bufferline_prev()
   end
 end
 
-map('n', '<leader>n', ':NvimTreeFindFileToggle<CR>')
+map('n', '<leader><Tab>', ':NvimTreeFindFileToggle<CR>')
 map('n', '<C-M>', safe_bufferline_next, { desc = "Next Buffer (Bufferline)" })
 map('n', '<C-N>', safe_bufferline_prev, { desc = "Previous Buffer (Bufferline)" })
 
+local function move_bufferline_next()
+  if pcall(require, 'bufferline') then
+    vim.cmd('BufferLineMoveNext')
+  end
+end
 
+local function move_bufferline_prev()
+  if pcall(require, 'bufferline') then
+    vim.cmd('BufferLineMovePrev')
+  end
+end
+
+
+
+map('n', '<C-.>', move_bufferline_next, { noremap = true, silent = true, desc = "Move Buffer Right (Bufferline)" })
+map('n', '<C-,>', move_bufferline_prev, { noremap = true, silent = true, desc = "Move Buffer Left (Bufferline)" })

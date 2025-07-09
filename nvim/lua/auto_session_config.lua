@@ -13,6 +13,7 @@ require('auto-session').setup({
     auto_restore_last_session = vim.loop.cwd() == vim.loop.os_homedir(),
 	auto_session_suppress_dirs = suppressed_dirs,
 	auto_session_use_git_branch = true,
+	args_allow_files_auto_save = false,
 	pre_restore_cmds = { "BufferlineDisable" },
 	post_restore_cmds = {
 		"BufferlineEnable",
