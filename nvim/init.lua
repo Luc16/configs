@@ -32,6 +32,7 @@ Plug('unblevable/quick-scope')
 Plug('lervag/vimtex') -- LaTeX support
 Plug('psliwka/vim-smoothie')
 Plug('kshenoy/vim-signature')       -- To show marks
+Plug('folke/snacks.nvim')          -- Snacking plugin for Neovim
 
 -- Git-related plugins
 Plug('tpope/vim-fugitive')          -- For Git integration
@@ -60,6 +61,7 @@ require("copilot_config")
 require("cmp_config")
 require("telescope_config")
 require("toggleterm_config")
+require("snacks_config")
 require("gitsigns_config")
 
 print("✅ Configuration loaded!")
