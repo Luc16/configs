@@ -1,5 +1,5 @@
 local suppressed_dirs = {
-	'~', '/', '~/Downloads', '~/Documents',
+	'~/', '/', '~/Downloads/', '~/Documents/',
 }
 
 
@@ -10,10 +10,11 @@ require('auto-session').setup({
 	auto_create = true,
 	auto_session_enable_current_dir = true, -- Optional: Set to true if you want to restore if a session exists in the current directory
 	auto_session_root_dir = vim.fn.stdpath('data') .. "/sessions/",
-    auto_restore_last_session = vim.loop.cwd() == vim.loop.os_homedir(),
+    auto_restore_last_session = not _G.OPEN_DASHBOARD, -- Restore last session on startup unless --dashboard is passed
 	auto_session_suppress_dirs = suppressed_dirs,
 	auto_session_use_git_branch = true,
 	args_allow_files_auto_save = false,
+	args_allow_single_directory = true,
 	pre_restore_cmds = { "BufferlineDisable" },
 	post_restore_cmds = {
 		"BufferlineEnable",
@@ -31,13 +32,5 @@ require('auto-session').setup({
 	},
 
 })
-
-vim.api.nvim_create_autocmd("VimLeavePre", {
-	callback = function()
-		pcall(function()
-			vim.cmd("SessionSave")
-		end)
-		end
-	})
 
 

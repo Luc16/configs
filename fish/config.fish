@@ -2,6 +2,9 @@
 alias oldvim="vim"
 alias vim="nvim"
 alias vi="nvim"
+alias vid='nvim --cmd "let g:SHOULD_OPEN_DASHBOARD=1"'
+alias v="nvim"
+alias vd='nvim --cmd "let g:SHOULD_OPEN_DASHBOARD=1"'
 
 
 fish_vi_key_bindings

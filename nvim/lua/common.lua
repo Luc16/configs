@@ -13,6 +13,8 @@ vim.cmd("highlight QuickScopeSecondary guifg='#FF00FF' gui=underline ctermfg=201
 vim.opt.encoding="utf-8"
 vim.opt.swapfile = false
 vim.opt.shell = "/usr/bin/fish"
+vim.opt.foldmethod = "indent"
+vim.opt.foldlevelstart = 99
 
 vim.opt.splitright = true
 vim.opt.splitbelow = true
@@ -27,6 +29,22 @@ vim.opt.fileformat = "unix"
 vim.opt.updatetime = 250
 -- enable copy to clipboard
 vim.opt.clipboard = "unnamedplus"
+
+vim.api.nvim_create_autocmd("BufReadCmd", {
+  pattern = { "*.png", "*.jpg", "*.jpeg", "*.gif", "*.webp" },
+  callback = function()
+    local filename = vim.fn.shellescape(vim.api.nvim_buf_get_name(0))
+    vim.cmd("silent ! xdg-open " .. filename) -- For Linux
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufReadCmd", {
+  pattern = { "*.pdf" },
+  callback = function()
+    local filename = vim.fn.shellescape(vim.api.nvim_buf_get_name(0))
+    vim.cmd("silent ! xdg-open " .. filename) -- For Linux
+  end,
+})
 
 require("auto-save").setup({
   enabled = true,

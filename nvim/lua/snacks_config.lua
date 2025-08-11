@@ -1,25 +1,210 @@
+local Path = require("plenary.path")
+
+local hex_to_char = function(x)
+  return string.char(tonumber(x, 16))
+end
+
+local unescape = function(url)
+  return url:gsub("%%(%x%x)", hex_to_char)
+end
+
+local function get_recent_sessions()
+	local session_dir = vim.fn.stdpath("data") .. "/sessions/"
+	local session_files = vim.fn.glob(session_dir .. "*.vim", true, true)
+
+    if vim.fn.isdirectory(session_dir) == 0 then
+        return {} -- Return empty if session directory doesn't exist
+    end
+
+	local local_sessions = {}
+	for _, path in ipairs(session_files) do
+		local decoded_path = unescape(path)
+
+		-- 3. Remove the ".vim" extension
+		local without_extension = decoded_path:gsub("%.vim$", "")
+
+		start_index, end_index = string.find(without_extension, "sessions/")
+
+
+		local final_name = ""
+		if end_index then -- Check if the substring was found
+			final_name = string.sub(without_extension, end_index + 1)
+		end
+
+		-- print(final_name, " - ", without_extension)
+
+		local time = vim.fn.getftime(path)
+
+		table.insert(local_sessions, {name = final_name, time = time})
+
+	end
+
+	-- Sort sessions by modification time (most recent first)
+	table.sort(local_sessions, function(a, b)
+		return a.time > b.time
+	end)
+
+	local items = {}
+	local limit = math.min(#local_sessions, 10) -- Show up to 10 recent sessions
+	for i = 1, limit do
+		local session_name = local_sessions[i].name
+
+		table.insert(items, {
+			icon = " ", -- A clock icon for recent items
+			desc = session_name,
+			action = function()
+				vim.cmd("SessionRestore " .. session_name)
+			end,
+		})
+	end
+
+	return items
+end
+
+local recent_sessions = get_recent_sessions()
+
 require("snacks").setup({
-  opts = {
-    bigfile = {},
-    dashboard = {},
-    explorer = {},
-    indent = {},
-    input = {},
-    notifier = {
-      timeout = 3000,
-    },
-    picker = {},
-    quickfile = {},
-    scope = {},
-    scroll = {},
-    statuscolumn = {},
-    words = {},
-    styles = {
-      notification = {
-        -- wo = { wrap = true } -- Wrap notifications
-      },
-    },
-  },
+	bigfile = {enabled = true},
+	dashboard = {
+		enabled = _G.OPEN_DASHBOARD, -- Set to true if you want to open the dashboard on startup
+		width = 60,
+		row = nil, -- dashboard position. nil for center
+		col = nil, -- dashboard position. nil for center
+		pane_gap = 4, -- empty columns between vertical panes
+		autokeys = "1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", -- autokey sequence
+		-- These settings are used by some built-in sections
+		preset = {
+			-- Defaults to a picker that supports `fzf-lua`, `telescope.nvim` and `mini.pick`
+			---@type fun(cmd:string, opts:table)|nil
+			pick = nil,
+			-- Used by the `keys` section to show keymaps.
+			-- Set your custom keymaps here.
+			-- When using a function, the `items` argument are the default keymaps.
+			---@type snacks.dashboard.Item[]
+			keys = {
+				{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+				{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+
+				{ icon = " ", key = "t", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
+				{ icon = " ", key = "c", desc = "Config", action = ":SessionRestore /home/luc/.config|master" },
+				{ icon = " ", key = "r", desc = "Restore Last Session", action = recent_sessions[1].action, },
+				{ icon = "", key = "s", desc = "Search All Sessions", action = ":Autosession search" },
+				{ icon = " ", key = "m", desc = "Manage Sessions", action = ":Autosession delete" },
+				{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+			},
+			-- Used by the `header` section
+			header = [[
+			███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+			████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+			██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+			██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+			██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+			╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝]],
+		},
+		-- item field formatters
+		formats = {
+			icon = function(item)
+				-- if item.file and (item.icon == "file" or item.icon == "directory") then
+				-- 	return dashboard.icon(item.file, item.icon)
+				-- end
+				return { item.icon, width = 2, hl = "icon" }
+			end,
+			footer = { "%s", align = "center" },
+			header = { "%s", align = "center" },
+			file = function(item, ctx)
+				local fname = vim.fn.fnamemodify(item.file, ":~")
+				fname = ctx.width and #fname > ctx.width and vim.fn.pathshorten(fname) or fname
+				if #fname > ctx.width then
+					local dir = vim.fn.fnamemodify(fname, ":h")
+					local file = vim.fn.fnamemodify(fname, ":t")
+					if dir and file then
+						file = file:sub(-(ctx.width - #dir - 2))
+						fname = dir .. "/…" .. file
+					end
+				end
+				local dir, file = fname:match("^(.*)/(.+)$")
+				return dir and { { dir .. "/", hl = "dir" }, { file, hl = "file" } } or { { fname, hl = "file" } }
+			end,
+		},
+		sections = {
+			{ section = "header" },
+			{
+				pane = 2,
+				section = "terminal",
+				cmd = "colorscript -e square",
+				height = 5,
+				padding = 1,
+			},
+			{ section = "keys", gap = 1, padding = 1 },
+			--          { pane = 2, icon = " ", title = "Recent Sessions", indent = 2, padding = 1, items = get_recent_sessions },
+			-- { pane = 2, icon = " ", title = "Recent Files", section = "recent_files", indent = 2, padding = 1 },
+			-- { title = "Projects", items = sessions_as_projects(), pane = 2 },
+			{
+				pane = 2,
+				icon = " ",
+				title = "Git Status",
+				section = "terminal",
+				enabled = false,
+				cmd = "git status --short --branch --renames",
+				height = 5,
+				padding = 1,
+				ttl = 5 * 60, -- Time-to-live cache for 5 minutes
+				indent = 3,
+			},
+		},
+
+	},
+	explorer = {enabled = true},
+	indent = {
+		enabled = true,
+		animate = {
+			enabled = false,
+		}
+	},
+	input = {enabled = true},
+	notifier = {
+		timeout = 3000,
+	},
+	picker = {
+		enabled = true,
+
+		-- This is the new, correct configuration section
+		win = {
+			-- Keymaps for when you are in the INPUT prompt window
+			input = {
+				keys = {
+					-- Normal mode mappings for the input window
+						['<leader>l'] = "focus_preview",
+						['<leader>h'] = "focus_list",
+				}
+			},
+			-- Keymaps for when you are in the RESULTS list window
+			list = {
+				keys = {
+					-- Normal mode mappings for the list window
+						['<leader>l'] = "focus_preview",
+				-- ['<leader>h'] = "focus_input", -- 'focus_input' is correct for returning from the preview
+				}
+			},
+			preview = {
+				keys = {
+					-- Normal mode mappings for the preview window
+					['<leader>l'] = "focus_list",
+					['<leader>h'] = "focus_input", -- 'focus_input' is correct for returning from the preview
+				}
+			},
+		}
+	},
+	quickfile = {enabled = true},
+	scope = {enabled = true},
+	scroll = {enabled = false},
+	statuscolumn = {enabled = true},
+	words = {enabled = true},
+	styles = {
+		notification = {
+			-- wo = { wrap = true } -- Wrap notifications
+		},
+	},
 })
 
 -- 2. Run the initialization logic AFTER setting up the plugin
@@ -68,7 +253,9 @@ map("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "
 map("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Snacks: Find Buffers" })
 map("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Snacks: Find Config File" })
 map("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Snacks: Find Files" })
-map("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Snacks: Find Git Files" })
+map("n", "<leader>fs", function() vim.cmd(":Autosession search") end, { desc = "Snacks: Find Sessions" })
+-- map("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Snacks: Find Git Files" })
+map("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Snacks: Grep" })
 map("n", "<leader>fp", function() Snacks.picker.projects() end, { desc = "Snacks: Projects" })
 map("n", "<leader>fr", function() Snacks.picker.recent() end, { desc = "Snacks: Recent Files" })
 

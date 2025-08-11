@@ -1,6 +1,8 @@
 local vim = vim
 local Plug = vim.fn['plug#']
 
+_G.OPEN_DASHBOARD = (vim.g.SHOULD_OPEN_DASHBOARD == 1)
+
 vim.call('plug#begin')
 
 Plug('doums/darcula')
@@ -22,8 +24,13 @@ Plug('L3MON4D3/LuaSnip')          -- Snippet engine
 Plug('saadparwaiz1/cmp_luasnip')  -- Snippet source for nvim-cmp
 Plug('rafamadriz/friendly-snippets') -- A good collection of snippets
 Plug('nvim-lua/plenary.nvim')
+
 Plug('nvim-telescope/telescope.nvim')
 Plug('nvim-telescope/telescope-bibtex.nvim')
+Plug('nvim-lua/popup.nvim')
+Plug('nvim-lua/plenary.nvim')
+Plug('nvim-telescope/telescope-media-files.nvim')
+
 Plug('numToStr/Comment.nvim') -- Commenting plugin
 Plug("zbirenbaum/copilot.lua")
 Plug("zbirenbaum/copilot-cmp")
@@ -59,7 +66,7 @@ require("treesitter")
 require("lsp_config")
 require("copilot_config")
 require("cmp_config")
-require("telescope_config")
+-- require("telescope_config")
 require("toggleterm_config")
 require("snacks_config")
 require("gitsigns_config")
