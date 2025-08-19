@@ -1,0 +1,20 @@
+# ~/.config/starship.toml
+
+format = """$git_branch$directory\n$character"""
+
+[directory]
+style = "bg:#5986B6 fg:#ffffff"
+format = "[ $path ]($style)[](fg:#5986B6)"
+truncation_length = 4
+truncation_symbol = "…/"
+# Add this line to show more of the path outside of Git repos
+truncate_to_repo = false
+
+[git_branch]
+symbol = ""
+style = "bg:#ffb86c fg:#282a36"
+format = '[ $symbol $branch ](fg:#282a36 bg:#ffb86c)[](fg:#ffb86c bg:#5986B6)'
+
+[character]
+success_symbol = "[❯](bold green)"
+error_symbol = "[❯](bold red)"

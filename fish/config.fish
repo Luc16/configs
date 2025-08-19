@@ -21,3 +21,4 @@ bind \cl ''
 
 set -x QT_QPA_PLATFORM wayland
 
+starship init fish | source

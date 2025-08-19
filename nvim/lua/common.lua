@@ -3,7 +3,7 @@ vim.wo.number = true
 vim.wo.relativenumber = true
 vim.g.mouse = 'a'
 vim.g.mapleader = ' '
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions,globals"
 vim.opt.cmdheight = 2
 vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
 
