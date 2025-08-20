@@ -5,7 +5,7 @@ _G.OPEN_DASHBOARD = (vim.g.SHOULD_OPEN_DASHBOARD == 1)
 
 vim.call('plug#begin')
 
-Plug('doums/darcula')
+-- Plug('doums/darcula')
 Plug('kyazdani42/nvim-tree.lua')   -- File explorer
 Plug('tpope/vim-surround')
 Plug('kyazdani42/nvim-web-devicons')

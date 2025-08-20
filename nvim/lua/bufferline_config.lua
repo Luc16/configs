@@ -63,6 +63,8 @@ bufferline.setup({
     middle_mouse_command = "BufferLineClose",     -- Command for middle-clicking on a buffer
     focus_on_command = true, -- When using commands like 'BufferLineClose', focus on the next buffer.
   },
+highlights = {
+  },
 })
 
 -- Define custom commands for auto-session interaction
