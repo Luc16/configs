@@ -23,6 +23,8 @@ map('n', '<leader>fs', ':Telescope session-lens<CR>', { desc = "Find Session" })
 map('t', '<C-Space>', '<C-\\><C-n><Cmd>ToggleTerm<CR>', { desc = "Exit terminal & toggle (direct)" })
 map('t', '<C-n>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
 
+map('n', '<leader>ss', '<Cmd>SessionSave<CR>', { desc = "Save Session" })
+
 
 -- Copilot keymaps
 -- vim.api.nvim_set_keymap("i", "<leader>l", 'copilot#Accept("<CR>")', { silent = true, expr = true })

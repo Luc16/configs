@@ -302,8 +302,8 @@ map("n", "gD", function() Snacks.picker.lsp_declarations() end, { desc = "Snacks
 map("n", "gr", function() Snacks.picker.lsp_references() end, { desc = "Snacks: References", nowait = true })
 map("n", "gI", function() Snacks.picker.lsp_implementations() end, { desc = "Snacks: Goto Implementation" })
 map("n", "gy", function() Snacks.picker.lsp_type_definitions() end, { desc = "Snacks: Goto Type Definition" })
-map("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "Snacks: LSP Document Symbols" })
-map("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "Snacks: LSP Workspace Symbols" })
+-- map("n", "<leader>ss", function() Snacks.picker.lsp_symbols() end, { desc = "Snacks: LSP Document Symbols" })
+-- map("n", "<leader>sS", function() Snacks.picker.lsp_workspace_symbols() end, { desc = "Snacks: LSP Workspace Symbols" })
 
 -- Other
 map("n", "<leader>z", function() Snacks.zen() end, { desc = "Snacks: Toggle Zen Mode" })

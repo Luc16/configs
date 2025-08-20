@@ -1,7 +1,8 @@
 local suppressed_dirs = {
 	'~/', '/', '~/Downloads/', '~/Documents/',
 }
-
+local should_restore_last_session = (vim.v.argv == nil or #vim.v.argv == 2) and (not _G.OPEN_DASHBOARD)
+-- print(vim.v.argv[1], vim.v.argv[2], vim.v.argv[3], #vim.v.argv, should_restore_last_session, _G.OPEN_DASHBOARD)
 
 require('auto-session').setup({
 	log_level = 'info',
@@ -10,7 +11,7 @@ require('auto-session').setup({
 	auto_create = true,
 	auto_session_enable_current_dir = true, -- Optional: Set to true if you want to restore if a session exists in the current directory
 	auto_session_root_dir = vim.fn.stdpath('data') .. "/sessions/",
-    auto_restore_last_session = not _G.OPEN_DASHBOARD, -- Restore last session on startup unless --dashboard is passed
+    auto_restore_last_session = should_restore_last_session,
 	auto_session_suppress_dirs = suppressed_dirs,
 	auto_session_use_git_branch = true,
 	args_allow_files_auto_save = false,
@@ -32,5 +33,3 @@ require('auto-session').setup({
 	},
 
 })
-
-
