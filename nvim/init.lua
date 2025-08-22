@@ -41,6 +41,8 @@ Plug('psliwka/vim-smoothie')
 Plug('kshenoy/vim-signature')       -- To show marks
 Plug('folke/snacks.nvim')          -- Snacking plugin for Neovim
 
+Plug('jake-stewart/multicursor.nvim')
+
 -- Git-related plugins
 Plug('tpope/vim-fugitive')          -- For Git integration
 Plug('lewis6991/gitsigns.nvim')      -- To show Git diffs in the sign column
@@ -70,6 +72,7 @@ require("cmp_config")
 require("toggleterm_config")
 require("snacks_config")
 require("gitsigns_config")
+require("multicursor_config")
 
 print("✅ Configuration loaded!")
 

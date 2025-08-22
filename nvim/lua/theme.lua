@@ -154,6 +154,14 @@ local function apply_highlights()
     set_hl("SnacksMatch", { fg = colors.string, bold = true })
     set_hl("SnacksPopup", { bg = colors.background })
 
+	set_hl("MultiCursorCursor", { reverse = true })
+	set_hl("MultiCursorVisual", { link = "Visual" })
+	set_hl("MultiCursorSign", { link = "SignColumn"})
+	set_hl("MultiCursorMatchPreview", { link = "Search" })
+	set_hl("MultiCursorDisabledCursor", { reverse = true })
+	set_hl("MultiCursorDisabledVisual", { link = "Visual" })
+	set_hl("MultiCursorDisabledSign", { link = "SignColumn"})
+
 end
 
 -- Apply the theme.
