@@ -1,6 +1,6 @@
 # ~/.config/starship.toml
 
-format = """$git_branch$directory\n$character"""
+format = """$python$git_branch$directory\n$character"""
 
 [directory]
 style = 'bg:#5986B6 fg:#ffffff'
@@ -22,3 +22,8 @@ vicmd_symbol = '[\[N\]❯](bold yellow)'
 vimcmd_visual_symbol = '[\[V\]❯](bold blue)'
 vimcmd_replace_one_symbol = '[\[R\]❯](bold purple)'
 vimcmd_replace_symbol = '[\[R\]❯](bold purple)'
+
+[python]
+symbol = " "              # nice Python icon (requires Nerd Font)
+style = "bg:#98C379 fg:#282a36"
+format = '[ $symbol$virtualenv ]($style)[](fg:#98C379 bg:#ffb86c)'
