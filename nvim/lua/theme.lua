@@ -154,7 +154,7 @@ local function apply_highlights()
     set_hl("SnacksMatch", { fg = colors.string, bold = true })
     set_hl("SnacksPopup", { bg = colors.background })
 
-	set_hl("MultiCursorCursor", { reverse = true })
+	set_hl("MultiCursorCursor", { bg = "#665555", fg = "#cccccc" })
 	set_hl("MultiCursorVisual", { link = "Visual" })
 	set_hl("MultiCursorSign", { link = "SignColumn"})
 	set_hl("MultiCursorMatchPreview", { link = "Search" })
