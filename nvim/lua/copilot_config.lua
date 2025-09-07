@@ -8,8 +8,11 @@ require("copilot").setup({
 			--   -- next = "<C-]>", -- Next suggestion
 			--   -- prev = "<C-[>", -- Previous suggestion
 			-- },
-		},
-  panel = {
-    enabled = false, -- Disable Copilot's built-in panel (for chat etc.)
-  },
+	},
+	panel = {
+		enabled = false, -- Disable Copilot's built-in panel (for chat etc.)
+	},
+	filetypes = {
+		markdown = true,
+	},
 })

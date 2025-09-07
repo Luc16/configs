@@ -36,6 +36,7 @@ Plug("zbirenbaum/copilot.lua")
 Plug("zbirenbaum/copilot-cmp")
 Plug('rmagatti/auto-session')
 Plug('unblevable/quick-scope')
+Plug('smoka7/hop.nvim') -- Easy motion plugin
 Plug('lervag/vimtex') -- LaTeX support
 Plug('psliwka/vim-smoothie')
 Plug('kshenoy/vim-signature')       -- To show marks
@@ -68,6 +69,7 @@ require("treesitter")
 require("lsp_config")
 require("copilot_config")
 require("cmp_config")
+require("hop_config")
 -- require("telescope_config")
 require("toggleterm_config")
 require("snacks_config")

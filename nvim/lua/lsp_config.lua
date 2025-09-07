@@ -41,7 +41,7 @@ local on_attach = function(client, bufnr)
   -- Diagnostics (errors and warnings)
   nmap('[d', vim.diagnostic.goto_prev, 'Go to previous diagnostic')
   nmap(']d', vim.diagnostic.goto_next, 'Go to next diagnostic')
-  nmap('<leader>q', vim.diagnostic.setloclist, 'Open diagnostics list')
+  -- nmap('<leader>q', vim.diagnostic.setloclist, 'Open diagnostics list')
 end
 
 -- 3. Configure all language servers

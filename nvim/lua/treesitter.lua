@@ -14,7 +14,8 @@ require'nvim-treesitter.configs'.setup {
 		"css",
 		"bash",
 		"markdown",
-		"markdown_inline"
+		"markdown_inline",
+		"latex",
 	},
 	auto_install = true,
     sync_install = false,

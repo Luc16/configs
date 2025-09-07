@@ -23,7 +23,7 @@ local function get_recent_sessions()
 		-- 3. Remove the ".vim" extension
 		local without_extension = decoded_path:gsub("%.vim$", "")
 
-		start_index, end_index = string.find(without_extension, "sessions/")
+		local start_index, end_index = string.find(without_extension, "sessions/")
 
 
 		local final_name = ""
@@ -176,6 +176,8 @@ require("snacks").setup({
 					-- Normal mode mappings for the input window
 						['<leader>l'] = "focus_preview",
 						['<leader>h'] = "focus_list",
+						['<Tab>'] = {"list_down", mode = {'n', 'i'}},
+						['<S-Tab>'] = {"list_up", mode = {'n', 'i'}},
 				}
 			},
 			-- Keymaps for when you are in the RESULTS list window
@@ -183,6 +185,8 @@ require("snacks").setup({
 				keys = {
 					-- Normal mode mappings for the list window
 						['<leader>l'] = "focus_preview",
+						['<Tab>'] = "move_selection_next",
+						['<S-Tab>'] = "move_selection_prev",
 				-- ['<leader>h'] = "focus_input", -- 'focus_input' is correct for returning from the preview
 				}
 			},
@@ -191,6 +195,8 @@ require("snacks").setup({
 					-- Normal mode mappings for the preview window
 					['<leader>l'] = "focus_list",
 					['<leader>h'] = "focus_input", -- 'focus_input' is correct for returning from the preview
+					['<Tab>'] = "move_selection_next",
+					['<S-Tab>'] = "move_selection_prev",
 				}
 			},
 		}
@@ -243,14 +249,14 @@ local map = vim.keymap.set
 
 -- Top Pickers & Explorer
 map("n", "<leader><space>", function() Snacks.picker.smart() end, { desc = "Snacks: Smart Find Files" })
-map("n", "<leader>,", function() Snacks.picker.buffers() end, { desc = "Snacks: Buffers" })
+-- map("n", "<leader>c", function() Snacks.picker.buffers() end, { desc = "Snacks: Buffers" })
 map("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Snacks: Grep" })
 map("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "Snacks: Command History" })
 -- map("n", "<leader>n", function() Snacks.picker.notifications() end, { desc = "Snacks: Notification History" })
 -- map("n", "<leader>e", function() Snacks.explorer() end, { desc = "Snacks: File Explorer" })
 
 -- Find
-map("n", "<leader>fb", function() Snacks.picker.buffers() end, { desc = "Snacks: Find Buffers" })
+map("n", "<leader>b", function() Snacks.picker.buffers() end, { desc = "Snacks: Find Buffers" })
 map("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Snacks: Find Config File" })
 map("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Snacks: Find Files" })
 map("n", "<leader>fs", function() vim.cmd(":Autosession search") end, { desc = "Snacks: Find Sessions" })
@@ -310,7 +316,7 @@ map("n", "<leader>z", function() Snacks.zen() end, { desc = "Snacks: Toggle Zen 
 map("n", "<leader>Z", function() Snacks.zen.zoom() end, { desc = "Snacks: Toggle Zoom" })
 map("n", "<leader>.", function() Snacks.scratch() end, { desc = "Snacks: Toggle Scratch Buffer" })
 map("n", "<leader>S", function() Snacks.scratch.select() end, { desc = "Snacks: Select Scratch Buffer" })
-map("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Snacks: Delete Buffer" })
+-- map("n", "<leader>bd", function() Snacks.bufdelete() end, { desc = "Snacks: Delete Buffer" })
 map("n", "<leader>cR", function() Snacks.rename.rename_file() end, { desc = "Snacks: Rename File" })
 map({ "n", "v" }, "<leader>gB", function() Snacks.gitbrowse() end, { desc = "Snacks: Git Browse" })
 map("n", "<leader>gg", function() Snacks.lazygit() end, { desc = "Snacks: Lazygit" })

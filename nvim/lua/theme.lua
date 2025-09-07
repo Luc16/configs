@@ -162,6 +162,11 @@ local function apply_highlights()
 	set_hl("MultiCursorDisabledVisual", { link = "Visual" })
 	set_hl("MultiCursorDisabledSign", { link = "SignColumn"})
 
+
+	set_hl("HopNextKey", { fg = "#ffcccc", bold = true }) -- Red for the first character
+    set_hl("HopNextKey1", { fg = "#aaffaa", bold = true }) -- Green for the second
+    set_hl("HopNextKey2", { fg = "#aaaaff", bold = true }) -- Blue for any subsequent characters
+
 end
 
 -- Apply the theme.

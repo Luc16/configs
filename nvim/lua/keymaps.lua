@@ -8,7 +8,7 @@ map('n', '<C-h>', '<C-w>h', opts)
 map('n', '<C-j>', '<C-w>j', opts)
 map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
-map('n', '<leader>w', ':bd<CR>', opts) -- May not work
+map('n', '<leader>q', ':bd<CR>', opts)
 
 -- Open a new terminal in a vertical split
 map('n', '<leader>vt', ':hor term<CR>', { desc = "Open vertical terminal" })
@@ -24,6 +24,10 @@ map('t', '<C-Space>', '<C-\\><C-n><Cmd>ToggleTerm<CR>', { desc = "Exit terminal 
 map('t', '<C-n>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
 
 map('n', '<leader>ss', '<Cmd>SessionSave<CR>', { desc = "Save Session" })
+-- Remap f, F, t, T repeat keys
+map('n', ',', ';', { desc = "Repeat find forward" })
+map('n', '<leader>,', ',', { desc = "Repeat find backward" })
+map('n', '<leader>y', ':%y+<CR>', { noremap = true, silent = true, desc = "Yank (copy) whole file" })
 
 
 -- Copilot keymaps

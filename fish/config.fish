@@ -6,6 +6,7 @@ alias vid='nvim --cmd "let g:SHOULD_OPEN_DASHBOARD=1"'
 alias v="nvim"
 alias vd='nvim --cmd "let g:SHOULD_OPEN_DASHBOARD=1"'
 
+fish_add_path /home/luc/Documents/Mestrado/llvm-project/build/bin
 
 fish_vi_key_bindings
 
