@@ -87,3 +87,26 @@ vim.api.nvim_create_autocmd("CursorHold", {
   end,
   desc = "Show diagnostics on hover",
 })
+
+
+
+require("lsp_signature").setup({
+  bind = true, -- This is mandatory, otherwise border config won't get registered.
+  floating_window = true,
+  hint_enable = false,
+  handler_opts = {
+	border = "rounded"
+  },
+})
+
+
+--   bind = true, -- This is the default, tells the plugin to show signature help automatically
+--   doc_lines = 0, -- Number of documentation lines to show in the signature help, 0 disables it
+--   floating_window = true, -- Use a floating window for the signature help
+--   hint_enable = true, -- Show a virtual text hint with parameter information
+--   hint_prefix = "💡 ", -- Prefix for the virtual text hint
+--   handler_opts = {
+--     border = "rounded" -- Style of the floating window border
+--   },
+--   zindex = 200, -- The z-index of the floating window
+-- })

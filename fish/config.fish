@@ -7,6 +7,9 @@ alias v="nvim"
 alias vd='nvim --cmd "let g:SHOULD_OPEN_DASHBOARD=1"'
 
 fish_add_path /home/luc/Documents/Mestrado/llvm-project/build/bin
+fish_add_path /usr/local/cuda-12.2/bin/
+
+set LD_LIBRARY_PATH /usr/local/cuda-12.2/lib64$LD_LIBRARY_PATH
 
 fish_vi_key_bindings
 
@@ -20,6 +23,7 @@ set fish_cursor_external line      # External commands: line cursor
 
 bind \cl ''
 
-set -x QT_QPA_PLATFORM wayland
+# set -x QT_QPA_PLATFORM wayland
+set -x QT_QPA_PLATFORM xcb
 
 starship init fish | source

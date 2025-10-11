@@ -23,6 +23,7 @@ Plug('hrsh7th/cmp-path')          -- File path source for nvim-cmp
 Plug('L3MON4D3/LuaSnip')          -- Snippet engine
 Plug('saadparwaiz1/cmp_luasnip')  -- Snippet source for nvim-cmp
 Plug('rafamadriz/friendly-snippets') -- A good collection of snippets
+Plug('ray-x/lsp_signature.nvim')
 Plug('nvim-lua/plenary.nvim')
 
 Plug('nvim-telescope/telescope.nvim')
@@ -43,6 +44,8 @@ Plug('kshenoy/vim-signature')       -- To show marks
 Plug('folke/snacks.nvim')          -- Snacking plugin for Neovim
 
 Plug('jake-stewart/multicursor.nvim')
+Plug('MeanderingProgrammer/render-markdown.nvim')
+Plug('3rd/image.nvim')
 
 -- Git-related plugins
 Plug('tpope/vim-fugitive')          -- For Git integration
@@ -75,6 +78,7 @@ require("toggleterm_config")
 require("snacks_config")
 require("gitsigns_config")
 require("multicursor_config")
+require("markdown_config")
 
 print("✅ Configuration loaded!")
 
