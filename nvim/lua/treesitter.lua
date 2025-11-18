@@ -16,10 +16,13 @@ require'nvim-treesitter.configs'.setup {
 		"markdown",
 		"markdown_inline",
 		"latex",
+		"mlir",
+		"tablegen",
 	},
 	auto_install = true,
     sync_install = false,
 	highlight = { enable = true },
 	incremental_selection = { enable = true },
 	textobjects = { enable = true },
+	matchup = { enable = false },
 }

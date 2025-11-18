@@ -88,8 +88,8 @@ require("snacks").setup({
 				{ icon = " ", key = "t", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
 				{ icon = " ", key = "c", desc = "Config", action = ":SessionRestore /home/luc/.config|master" },
 				{ icon = " ", key = "r", desc = "Restore Last Session", action = recent_sessions[1].action, },
-				{ icon = "", key = "s", desc = "Search All Sessions", action = ":Autosession search" },
-				{ icon = " ", key = "m", desc = "Manage Sessions", action = ":Autosession delete" },
+				{ icon = "", key = "s", desc = "Search All Sessions", action = ":AutoSession search" },
+				{ icon = " ", key = "m", desc = "Manage Sessions", action = ":AutoSession deletePicker" },
 				{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 			},
 			-- Used by the `header` section
@@ -259,7 +259,7 @@ map("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "
 map("n", "<leader>b", function() Snacks.picker.buffers() end, { desc = "Snacks: Find Buffers" })
 map("n", "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, { desc = "Snacks: Find Config File" })
 map("n", "<leader>ff", function() Snacks.picker.files() end, { desc = "Snacks: Find Files" })
-map("n", "<leader>fs", function() vim.cmd(":Autosession search") end, { desc = "Snacks: Find Sessions" })
+map("n", "<leader>fs", function() vim.cmd(":AutoSession search") end, { desc = "Snacks: Find Sessions" })
 -- map("n", "<leader>fg", function() Snacks.picker.git_files() end, { desc = "Snacks: Find Git Files" })
 map("n", "<leader>fg", function() Snacks.picker.grep() end, { desc = "Snacks: Grep" })
 map("n", "<leader>fp", function() Snacks.picker.projects() end, { desc = "Snacks: Projects" })

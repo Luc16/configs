@@ -1,3 +1,5 @@
+-- lua/auto_session_config.lua
+
 local suppressed_dirs = {
 	'~/', '/', '~/Downloads/', '~/Documents/',
 }
@@ -16,9 +18,20 @@ require('auto-session').setup({
 	auto_session_use_git_branch = true,
 	args_allow_files_auto_save = false,
 	args_allow_single_directory = true,
-	pre_restore_cmds = { "BufferlineDisable" },
+	pre_restore_cmds = {
+        "BufferlineDisable",
+        -- ADDED: Disable Treesitter highlighting before restore
+        function() vim.cmd("TSDisable highlight") end
+    },
 	post_restore_cmds = {
 		"BufferlineEnable",
+        -- ADDED: Re-enable Treesitter highlighting after restore
+        function()
+            -- We use vim.schedule to ensure this runs after everything is fully loaded
+            vim.schedule(function()
+                vim.cmd("TSEnable highlight")
+            end)
+        end,
 		function()
 			-- Restore nvim-tree after a session is restored
 			local nvim_tree_api = require('nvim-tree.api')

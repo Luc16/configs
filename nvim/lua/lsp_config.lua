@@ -16,6 +16,13 @@ require("mason-lspconfig").setup({
   },
 })
 
+vim.filetype.add({
+  extension = {
+    td = "tablegen",
+    mlir = "mlir",
+  },
+})
+
 -- 2. Define the 'on_attach' function
 -- This function runs once for each language server that starts.
 -- We use it to set keymaps and other buffer-local settings.
@@ -45,31 +52,31 @@ local on_attach = function(client, bufnr)
 end
 
 -- 3. Configure all language servers
-local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities() -- Capabilities for nvim-cmp
+-- local lspconfig = require('lspconfig')
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities() -- Capabilities for nvim-cmp
 
 -- This loop sets up every server that mason-lspconfig has installed.
 -- It attaches the keymaps and capabilities we defined above.
-for _, server_name in ipairs(require("mason-lspconfig").get_installed_servers()) do
-  lspconfig[server_name].setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
-end
+-- for _, server_name in ipairs(require("mason-lspconfig").get_installed_servers()) do
+--   lspconfig[server_name].setup {
+--     on_attach = on_attach,
+--     capabilities = capabilities,
+--   }
+-- end
 
 -- 4. Custom setup for the Lua language server
 -- This tells lua_ls about the Neovim runtime API, so you get completion for `vim.fn` etc.
-lspconfig.lua_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  settings = {
-    Lua = {
-      runtime = { version = 'LuaJIT' },
-      diagnostics = { globals = {'vim'} },
-      workspace = { library = vim.api.nvim_get_runtime_file("", true) },
-    },
-  },
-}
+-- lspconfig.lua_ls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   settings = {
+--     Lua = {
+--       runtime = { version = 'LuaJIT' },
+--       diagnostics = { globals = {'vim'} },
+--       workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+--     },
+--   },
+-- }
 
 local diagnostics_group = vim.api.nvim_create_augroup("ShowDiagnosticsOnHover", { clear = true })
 

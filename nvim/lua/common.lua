@@ -1,4 +1,3 @@
-
 vim.wo.number = true
 vim.wo.relativenumber = true
 vim.g.mouse = 'a'
@@ -7,13 +6,23 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 vim.opt.cmdheight = 2
 vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
 
+-- Activate spell checking for markdown and latex files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "tex" },
+  callback = function()
+    vim.opt_local.spell = true           -- enable spell checking
+    vim.opt_local.spelllang = { "en_us" } -- set language(s), e.g. {"en_us", "pt_br"}
+  end,
+})
+
 vim.cmd("highlight QuickScopePrimary guifg='#FFD700' gui=underline ctermfg=220 cterm=underline")
 vim.cmd("highlight QuickScopeSecondary guifg='#FF00FF' gui=underline ctermfg=201 cterm=underline")
 
+vim.opt.conceallevel = 0
 vim.opt.encoding="utf-8"
 vim.opt.swapfile = false
 vim.opt.shell = "/usr/bin/fish"
-vim.opt.foldmethod = "indent"
+vim.opt.foldmethod = "syntax"
 vim.opt.foldlevelstart = 99
 
 vim.opt.splitright = true

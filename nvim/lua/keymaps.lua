@@ -77,7 +77,5 @@ local function move_bufferline_prev()
   end
 end
 
-
-
 map('n', '<C-.>', move_bufferline_next, { noremap = true, silent = true, desc = "Move Buffer Right (Bufferline)" })
 map('n', '<C-,>', move_bufferline_prev, { noremap = true, silent = true, desc = "Move Buffer Left (Bufferline)" })

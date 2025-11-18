@@ -39,6 +39,13 @@ hop.setup {
 -- normal mode (easymotion-like)
 -- map("n", "<Leader>b", "<cmd>HopWordBC<CR>", {noremap=true})
 map({'n', 'v'}, "<Leader>w", "<cmd>HopWord<CR>", {noremap=true, desc = "Hop to word"})
+map({'n', 'v'}, "<Leader>e", function()
+  local hop = require('hop')
+  hop.hint_words({
+    current_line_only = false,
+    hint_position = require('hop.hint').HintPosition.END,
+  })
+end, { noremap = true, desc = "Hop to end of word" })
 map({'n', 'v'}, "<Leader>j", "<cmd>HopLine<CR>", {noremap=true, desc = "Hop to line"})
 map({'n', 'v'}, "<Leader>k", "<cmd>HopLine<CR>", {noremap=true, desc = "Hop to line"})
 
