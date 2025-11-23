@@ -15,9 +15,9 @@ set({"n", "x"}, "<leader><down>", function() multicursor.lineSkipCursor(1) end)
 
 -- Add or skip adding a new cursor by matching word/selection
 -- set({"n", "x"}, "<leader>n", function() multicursor.matchAddCursor(1) end)
-set({"n", "x"}, ";", function() multicursor.matchAddCursor(1) end)
+set({"n", "x"}, "ç", function() multicursor.matchAddCursor(1) end)
 set({"n", "x"}, "<leader>s", function() multicursor.matchSkipCursor(1) end)
-set({"n", "x"}, "<c-;>", function() multicursor.matchAddCursor(-1) end)
+set({"n", "x"}, "<c-ç>", function() multicursor.matchAddCursor(-1) end)
 set({"n", "x"}, "<leader>S", function() multicursor.matchSkipCursor(-1) end)
 
 -- Add and remove cursors with control + left click.

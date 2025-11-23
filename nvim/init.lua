@@ -43,6 +43,8 @@ Plug('psliwka/vim-smoothie')
 Plug('kshenoy/vim-signature')       -- To show marks
 Plug('folke/snacks.nvim')          -- Snacking plugin for Neovim
 
+Plug('mateusbraga/vim-spell-pt-br')
+
 Plug('jake-stewart/multicursor.nvim')
 Plug('MeanderingProgrammer/render-markdown.nvim')
 Plug('3rd/image.nvim')

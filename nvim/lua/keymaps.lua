@@ -25,8 +25,8 @@ map('t', '<C-n>', '<C-\\><C-n>', { desc = "Exit terminal mode" })
 
 map('n', '<leader>ss', '<Cmd>SessionSave<CR>', { desc = "Save Session" })
 -- Remap f, F, t, T repeat keys
-map('n', ',', ';', { desc = "Repeat find forward" })
-map('n', '<leader>,', ',', { desc = "Repeat find backward" })
+-- map('n', ',', ';', { desc = "Repeat find forward" })
+-- map('n', '<leader>,', ',', { desc = "Repeat find backward" })
 map('n', '<leader>y', ':%y+<CR>', { noremap = true, silent = true, desc = "Yank (copy) whole file" })
 
 map('n', '<leader>v', 'ggVG', { noremap = true, silent = true, desc = "Select whole file" })

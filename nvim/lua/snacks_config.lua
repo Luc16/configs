@@ -53,7 +53,7 @@ local function get_recent_sessions()
 			icon = " ", -- A clock icon for recent items
 			desc = session_name,
 			action = function()
-				vim.cmd("SessionRestore " .. session_name)
+				vim.cmd("AutoSession restore " .. session_name)
 			end,
 		})
 	end
@@ -86,7 +86,7 @@ require("snacks").setup({
 				{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
 
 				{ icon = " ", key = "t", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
-				{ icon = " ", key = "c", desc = "Config", action = ":SessionRestore /home/luc/.config|master" },
+				{ icon = " ", key = "c", desc = "Config", action = ":AutoSession restore /home/luc/.config|master" },
 				{ icon = " ", key = "r", desc = "Restore Last Session", action = recent_sessions[1].action, },
 				{ icon = "", key = "s", desc = "Search All Sessions", action = ":AutoSession search" },
 				{ icon = " ", key = "m", desc = "Manage Sessions", action = ":AutoSession deletePicker" },

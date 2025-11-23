@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "tex" },
   callback = function()
     vim.opt_local.spell = true           -- enable spell checking
-    vim.opt_local.spelllang = { "en_us" } -- set language(s), e.g. {"en_us", "pt_br"}
+    vim.opt_local.spelllang = { "en_us", "pt_br" } -- set language(s), e.g. {"en_us", "pt_br"}
   end,
 })
 
