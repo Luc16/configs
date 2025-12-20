@@ -10,6 +10,8 @@ map('n', '<C-k>', '<C-w>k', opts)
 map('n', '<C-l>', '<C-w>l', opts)
 map('n', '<leader>q', ':bd<CR>', opts)
 
+map("v", "<leader>p", '"_dP', { noremap = true, silent = true, desc = "Paste without overwriting register" })
+
 -- Open a new terminal in a vertical split
 map('n', '<leader>tv', ':hor term<CR>', { desc = "Open vertical terminal" })
 -- Open a new terminal in a horizontal split
