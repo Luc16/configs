@@ -8,12 +8,14 @@ alias vd='nvim --cmd "let g:SHOULD_OPEN_DASHBOARD=1"'
 
 fish_add_path /home/luc/Documents/Mestrado/llvm-project/build/bin
 fish_add_path /usr/local/cuda-12.2/bin/
+set -gx ANDROID_HOME $HOME/android-sdk
+fish_add_path $ANDROID_HOME/cmdline-tools/latest/bin $ANDROID_HOME/platform-tools
 # fish_add_path /opt/riscv/bin
 # fish_add_path /opt/riscv/bin/bin/
 # fish_add_path /opt/riscv/riscv64-unknown-elf/bin
 
 # set LD_LIBRARY_PATH /usr/local/cuda-12.2/lib64$LD_LIBRARY_PATH
-set LD_LIBRARY_PATH /usr/local/cuda-12.2/lib64 $LD_LIBRARY_PATH
+set -gx LD_LIBRARY_PATH /usr/local/cuda-12.2/lib64 $LD_LIBRARY_PATH
 
 fish_vi_key_bindings
 
