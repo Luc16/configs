@@ -42,6 +42,7 @@ Plug('lervag/vimtex') -- LaTeX support
 Plug('psliwka/vim-smoothie')
 Plug('kshenoy/vim-signature')       -- To show marks
 Plug('folke/snacks.nvim')          -- Snacking plugin for Neovim
+Plug('windwp/nvim-autopairs')    -- Autopairs plugin
 
 Plug('mateusbraga/vim-spell-pt-br')
 
@@ -75,6 +76,7 @@ require("lsp_config")
 require("copilot_config")
 require("cmp_config")
 require("hop_config")
+require("autopairs_config")
 -- require("telescope_config")
 require("toggleterm_config")
 require("snacks_config")
