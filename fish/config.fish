@@ -27,8 +27,15 @@ set fish_cursor_replace underscore # Replace mode: underscore cursor
 set fish_cursor_replace_one underscore
 set fish_cursor_external line      # External commands: line cursor
 
-bind \cl ''
-
+# bind \cl ''
+# bind -M insert \cf accept-autosuggestion
+# bind -M default \cf accept-autosuggestion
+bind -M insert \cl accept-autosuggestion
+bind -M default \cl accept-autosuggestion
+bind -M insert \ck history-search-backward
+bind -M default \ck history-search-backward
+bind -M insert \cj history-search-forward
+bind -M default \cj history-search-forward
 # set -x QT_QPA_PLATFORM wayland
 set -x QT_QPA_PLATFORM xcb
 

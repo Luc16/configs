@@ -6,6 +6,15 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 vim.opt.cmdheight = 2
 vim.g.qs_highlight_on_keys = {'f', 'F', 't', 'T'}
 
+-- Use tab as 2 spaces
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+
+
 -- Activate spell checking for markdown and latex files
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "markdown", "tex" },
@@ -29,10 +38,10 @@ vim.opt.splitright = true
 vim.opt.splitbelow = true
 
 vim.opt.scrolloff = 7
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.autoindent = true
+-- vim.opt.tabstop = 4
+-- vim.opt.softtabstop = 4
+-- vim.opt.shiftwidth = 4
+-- vim.opt.autoindent = true
 
 vim.opt.fileformat = "unix"
 vim.opt.updatetime = 250
@@ -58,10 +67,12 @@ vim.api.nvim_create_autocmd("BufReadCmd", {
 require("auto-save").setup({
   enabled = true,
   execution_message = {
-    message = "✓",
-    dim = 0.5,
-    cleaning_interval = 750,
-  },
+		message = function() -- message to print on save
+      return ""
+		end,
+		dim = 0.18, -- dim the color of `message`
+		cleaning_interval = 1250, -- (milliseconds) automatically clean MsgArea after displaying `message`. See :h MsgArea
+	},
   -- RECOMMENDED: Triggers on logical "pause" points in your workflow.
   -- This covers closing buffers and implicitly saves after an undo.
   trigger_events = { "InsertLeave", "BufLeave", "BufWinLeave", "FocusLost" },

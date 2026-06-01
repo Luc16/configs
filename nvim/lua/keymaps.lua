@@ -30,6 +30,13 @@ map('n', '<leader>ss', '<Cmd>SessionSave<CR>', { desc = "Save Session" })
 -- map('n', ',', ';', { desc = "Repeat find forward" })
 -- map('n', '<leader>,', ',', { desc = "Repeat find backward" })
 map('n', '<leader>y', ':%y+<CR>', { noremap = true, silent = true, desc = "Yank (copy) whole file" })
+map({'n', 'v'}, '<leader>d', '"zd', { desc = "Delete into register z" })
+-- Yank into register a
+map({'n', 'v'}, '<leader>ay', '"ay', { desc = "Yank into register a" })
+map('n', '<leader>ay', '"ay', { desc = "Yank into register a" })
+-- Paste from register a
+map('n', '<leader>ap', '"ap', { desc = "Paste from register a" })
+
 
 map('n', '<leader>v', 'ggVG', { noremap = true, silent = true, desc = "Select whole file" })
 

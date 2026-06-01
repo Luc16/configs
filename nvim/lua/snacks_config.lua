@@ -84,12 +84,12 @@ require("snacks").setup({
 			keys = {
 				{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
 				{ icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-
 				{ icon = " ", key = "t", desc = "Recent Files", action = ":lua Snacks.dashboard.pick('oldfiles')" },
 				{ icon = " ", key = "c", desc = "Config", action = ":AutoSession restore /home/luc/.config|master" },
 				{ icon = " ", key = "r", desc = "Restore Last Session", action = recent_sessions[1].action, },
 				{ icon = "", key = "s", desc = "Search All Sessions", action = ":AutoSession search" },
 				{ icon = " ", key = "m", desc = "Manage Sessions", action = ":AutoSession deletePicker" },
+        { icon = "󰒍 ", key = "h", desc = "Connect to Remote (SSHFS)", action = ":RemoteSSHFSConnect" },
 				{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
 			},
 			-- Used by the `header` section
@@ -239,6 +239,33 @@ vim.api.nvim_create_autocmd("User", {
     require("snacks").toggle.indent():map("<leader>ug")
     require("snacks").toggle.dim():map("<leader>uD")
   end,
+})
+
+require("noice").setup({
+  cmdline = {
+    view = "cmdline_popup",
+    format = {
+      search_down = { icon = " " },
+      search_up = { icon = " " },
+    },
+  },
+  views = {
+    cmdline_popup = {
+      position = {
+        row = "25%",
+        col = "50%",
+      },
+    },
+  },
+  routes = {
+    {
+      filter = {
+        event = "msg_show",
+        kind = "written",
+      },
+      opts = { skip = true },
+    },
+  },
 })
 
 -- Helper function to make keymapping simpler

@@ -43,6 +43,11 @@ require('auto-session').setup({
 	session_lens = {
 		load_on_setup = true,
 		theme_conf = { border = true },
+    file_ignore_patterns = { "%.remote%-sshfs" },
+    -- If the above doesn't work, some versions require it here:
+    telescope_conf = {
+      file_ignore_patterns = { "%.remote%-sshfs" },
+    }
 	},
 
 })
