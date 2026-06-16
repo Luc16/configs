@@ -13,6 +13,7 @@ require("mason-lspconfig").setup({
     "marksman",
     "texlab",
     "kotlin_lsp",
+    "ts_ls",
   },
   automatic_enable = true,
 })

@@ -25,13 +25,6 @@ require('auto-session').setup({
     },
 	post_restore_cmds = {
 		"BufferlineEnable",
-        -- ADDED: Re-enable Treesitter highlighting after restore
-        function()
-            -- We use vim.schedule to ensure this runs after everything is fully loaded
-            vim.schedule(function()
-                vim.cmd("TSEnable highlight")
-            end)
-        end,
 		function()
 			-- Restore nvim-tree after a session is restored
 			local nvim_tree_api = require('nvim-tree.api')

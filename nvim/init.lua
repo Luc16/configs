@@ -12,8 +12,9 @@ Plug('kyazdani42/nvim-web-devicons')
 Plug('akinsho/bufferline.nvim')
 Plug('nvim-lualine/lualine.nvim')
 Plug('Pocco81/auto-save.nvim')
-Plug('nvim-treesitter/nvim-treesitter')
-Plug('nvim-treesitter/nvim-treesitter-context')
+-- Plug('nvim-treesitter/nvim-treesitter')
+-- Plug('nvim-treesitter/nvim-treesitter-textobjects')
+-- Plug('nvim-treesitter/nvim-treesitter-context')
 Plug('neovim/nvim-lspconfig')             -- Core LSP configuration
 Plug('williamboman/mason.nvim')          -- "App store" for LSPs
 Plug('williamboman/mason-lspconfig.nvim') -- Bridge between Mason and lspconfig
@@ -57,11 +58,15 @@ Plug('nosduco/remote-sshfs.nvim')
 
 -- Git-related plugins
 Plug('tpope/vim-fugitive')          -- For Git integration
+Plug('farhanmustar/fugitive-delta.nvim')
 Plug('lewis6991/gitsigns.nvim')      -- To show Git diffs in the sign column
 
 vim.cmd [[
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install' }
   Plug 'akinsho/toggleterm.nvim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter-textobjects'
+  Plug 'nvim-treesitter/nvim-treesitter-context'
 ]]
 
 vim.call('plug#end')

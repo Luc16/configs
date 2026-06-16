@@ -72,6 +72,18 @@ gitsigns.setup({
 		map('n', '<leader>gq', function() vim.cmd('Gitsigns setqflist all') end, "Populate quickfix with hunks")
 		map('n', '<leader>gt', toggle)
 		map('n', '<leader>gl', gs.preview_hunk, "Preview Git hunk for current line")
+    map("n", "<leader>gpp", function()
+      local gs = require("gitsigns")
+      gs.change_base("HEAD~1")
+      -- gs.preview_hunk()
+      -- gs.change_base("HEAD")
+    end, "Change signs base to prev commit hunk")
+    map("n", "<leader>gpo", function()
+      local gs = require("gitsigns")
+      gs.change_base("HEAD")
+      -- gs.preview_hunk()
+      -- gs.change_base("HEAD")
+    end, "Change signs base to curr commit hunk")
 		-- Visual mode mappings
 		map('v', '<leader>gs', function()
 			gs.stage_hunk { vim.fn.line("."), vim.fn.line("v") }
