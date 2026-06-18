@@ -20,8 +20,6 @@ require('auto-session').setup({
 	args_allow_single_directory = true,
 	pre_restore_cmds = {
         "BufferlineDisable",
-        -- ADDED: Disable Treesitter highlighting before restore
-        function() vim.cmd("TSDisable highlight") end
     },
 	post_restore_cmds = {
 		"BufferlineEnable",
