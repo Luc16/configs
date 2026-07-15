@@ -42,7 +42,7 @@ Plug('unblevable/quick-scope')
 Plug('smoka7/hop.nvim') -- Easy motion plugin
 Plug('lervag/vimtex') -- LaTeX support
 Plug('psliwka/vim-smoothie')
-Plug('kshenoy/vim-signature')       -- To show marks
+-- Plug('kshenoy/vim-signature')       -- To show marks
 Plug('folke/snacks.nvim')          -- Snacking plugin for Neovim
 Plug('folke/noice.nvim')         
 Plug('windwp/nvim-autopairs')    -- Autopairs plugin
@@ -81,7 +81,7 @@ require("vimtree")
 require("bufferline_config")
 require("lua_line_config")
 require("auto_session_config")
-require("treesitter")
+require("treesitter_config")
 require("lsp_config")
 require("copilot_config")
 require("cmp_config")

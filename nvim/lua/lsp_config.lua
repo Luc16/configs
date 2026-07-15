@@ -28,6 +28,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     local nmap = function(keys, func, desc)
       vim.keymap.set('n', keys, func, { buffer = bufnr, desc = 'LSP: ' .. (desc or ""), noremap = true, silent = true })
     end
+    -- if client then
+    --   client.server_capabilities.semanticTokensProvider = nil
+    -- end
 
     -- Navigation
     nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')

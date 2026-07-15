@@ -127,7 +127,35 @@ local function apply_highlights()
   set_hl("@keyword.repeat", { fg = colors.keyword })
   set_hl("@keyword.conditional", { fg = colors.keyword })
   -- vim.cmd("highlight! link @variable.global @variable.builtin")
-  --
+
+  -- === Modern 0.10+ Directives & Modules (C++, General) ===
+  set_hl("@keyword.directive", { fg = colors.include })        -- #include
+  set_hl("@keyword.directive.define", { fg = colors.preproc }) -- #define
+  set_hl("@keyword.import", { fg = colors.include }) -- #define
+  set_hl("@module", { fg = colors.namespace, italic = true })  -- namespaces
+  set_hl("@function.macro", { fg = colors.preproc })           -- macros
+
+  -- === Python Specifics ===
+  set_hl("@keyword.exception", { fg = colors.keyword })        -- try, except, raise
+  set_hl("@keyword.return", { fg = colors.keyword })           -- return, yield
+  set_hl("@keyword.operator", { fg = colors.keyword })         -- and, or, not
+  set_hl("@variable.builtin", { fg = colors.keyword, italic = true }) -- self, cls
+  set_hl("@attribute", { fg = colors.preproc })                -- @decorators
+  set_hl("@string.escape", { fg = colors.keyword })            -- f-string {} brackets
+
+  -- === LaTeX & Markdown (Markup Groups) ===
+  set_hl("@markup.heading", { fg = colors.func_call, bold = true })
+  set_hl("@markup.math", { fg = colors.struct_type })          -- Math mode $...$
+  set_hl("@markup.environment", { fg = colors.keyword })       -- \begin and \end
+  set_hl("@markup.environment.name", { fg = colors.func_call })-- environment names
+  set_hl("@markup.link", { fg = colors.number, underline = true })
+  set_hl("@markup.link.label", { fg = colors.string })
+  set_hl("@markup.link.url", { fg = colors.comment, italic = true })
+  set_hl("@markup.strong", { bold = true })
+  set_hl("@markup.italic", { italic = true })
+  set_hl("@markup.raw", { fg = colors.comment })               -- Verbatim / inline code
+  set_hl("@punctuation.special", { fg = colors.keyword })      -- LaTeX command slashes (\)
+
   set_hl("Statement", { fg = colors.keyword })
   set_hl("Conditional", { fg = colors.keyword })
   set_hl("Repeat", { fg = colors.keyword })
@@ -140,6 +168,9 @@ local function apply_highlights()
   set_hl("Type", { fg = colors.struct_type })
   set_hl("Function", { fg = colors.func_call })
   set_hl("Operator", { fg = colors.operator })
+  set_hl("@preproc", { fg = colors.include })
+  set_hl("@define", { fg = colors.preproc })
+  set_hl("@include", { fg = colors.include })
 
   -- ==============================================================================
   -- === Plugin UI Highlighting ===================================================

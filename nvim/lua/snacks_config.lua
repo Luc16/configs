@@ -199,7 +199,18 @@ require("snacks").setup({
 					['<S-Tab>'] = "move_selection_prev",
 				}
 			},
-		}
+		},
+    sources = {
+      files = {
+        hidden = true,   -- Shows hidden files (e.g., .env, .gitignore)
+        ignored = true,  -- Shows git-ignored files (e.g., node_modules)
+        follow = true,   -- Optional: Follow symlinks
+      },
+      grep = {
+        hidden = true,
+        ignored = true,
+      },
+    },
 	},
 	quickfile = {enabled = true},
 	scope = {enabled = true},
@@ -275,7 +286,8 @@ local map = vim.keymap.set
 -- The format is: map(mode, lhs, rhs, { desc = "description" })
 
 -- Top Pickers & Explorer
-map("n", "<leader><space>", function() Snacks.picker.smart() end, { desc = "Snacks: Smart Find Files" })
+-- map("n", "<leader><space>", function() Snacks.picker.smart() end, { desc = "Snacks: Smart Find Files" })
+map("n", "<leader><space>", function() Snacks.picker.files() end, { desc = "Snacks: Smart Find Files" })
 -- map("n", "<leader>c", function() Snacks.picker.buffers() end, { desc = "Snacks: Buffers" })
 map("n", "<leader>/", function() Snacks.picker.grep() end, { desc = "Snacks: Grep" })
 map("n", "<leader>:", function() Snacks.picker.command_history() end, { desc = "Snacks: Command History" })

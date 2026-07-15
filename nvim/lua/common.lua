@@ -31,7 +31,8 @@ vim.opt.conceallevel = 0
 vim.opt.encoding="utf-8"
 vim.opt.swapfile = false
 vim.opt.shell = "/usr/bin/fish"
-vim.opt.foldmethod = "syntax"
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 vim.opt.foldlevelstart = 99
 
 vim.opt.splitright = true
