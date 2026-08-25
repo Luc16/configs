@@ -20,6 +20,7 @@ map('n', '<leader>tt', ':term<CR>', { desc = "Open Terminal Buffer" })
 
 map('n', '<C-Space>', '<Cmd>ToggleTerm<CR>', { desc = "Toggle floating terminal" })
 map('n', '<leader>mp', '<Cmd>MarkdownPreviewToggle<CR>', { desc = "Toggle Markdown Preview" })
+map('n', '<leader>r', '<Cmd>registers<CR>', { desc = "Show registers" })
 map('n', '<leader>fs', ':Telescope session-lens<CR>', { desc = "Find Session" })
 -- This is the magic keymap to easily exit Terminal mode
 map('t', '<C-Space>', '<C-\\><C-n><Cmd>ToggleTerm<CR>', { desc = "Exit terminal & toggle (direct)" })
@@ -53,6 +54,44 @@ map('n', '<leader>cd', '<Cmd>Copilot disable<CR><Cmd>Copilot status<CR>', { desc
 map('n', '<leader>cp', '<Cmd>Copilot panel<CR>', { desc = "Toggle Copilot Panel" })
 -- Show Copilot Status
 map('n', '<leader>cs', '<Cmd>Copilot status<CR>', { desc = "Show Copilot Status" })
+
+-- Diagnostic navigation
+map('n', ']j', function()
+  vim.diagnostic.jump({
+    count = 1,
+    severity = vim.diagnostic.severity.ERROR,
+  })
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Go to next error",
+})
+
+map('n', ']k', function()
+  vim.diagnostic.jump({
+    count = -1,
+    severity = vim.diagnostic.severity.ERROR,
+  })
+end, {
+  noremap = true,
+  silent = true,
+  desc = "Go to previous error",
+})
+
+
+-- Slidev Presentation Keymap
+-- map('n', '<leader>ms', function()
+--     local file = vim.fn.expand("%")
+--     vim.notify("Launching Slidev in Firefox...", vim.log.levels.INFO)
+--     -- This sends the command directly to your ToggleTerm in the background
+--     vim.cmd("TermExec cmd='slidev " .. file .. " --open'")
+-- end, { desc = "Start Slidev Presentation" })
+--
+-- Starts the Slidev server, opens Firefox, and enables live cursor sync
+map('n', '<leader>mm', '<Cmd>SlidevPreviewStart<CR>', { desc = "Start Slidev Sync" })
+
+-- Stops the server and disconnects sync
+map('n', '<leader>ms', '<Cmd>SlidevPreviewStop<CR>', { desc = "Stop Slidev Sync" })
 
 local function safe_bufferline_next()
   if pcall(require, 'bufferline') then
