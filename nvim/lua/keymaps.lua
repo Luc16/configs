@@ -20,6 +20,7 @@ map('n', '<leader>tt', ':term<CR>', { desc = "Open Terminal Buffer" })
 
 map('n', '<C-Space>', '<Cmd>ToggleTerm<CR>', { desc = "Toggle floating terminal" })
 map('n', '<leader>mp', '<Cmd>MarkdownPreviewToggle<CR>', { desc = "Toggle Markdown Preview" })
+map('n', '<leader>r', '<Cmd>registers<CR>', { desc = "Show Register Content" })
 map('n', '<leader>fs', ':Telescope session-lens<CR>', { desc = "Find Session" })
 -- This is the magic keymap to easily exit Terminal mode
 map('t', '<C-Space>', '<C-\\><C-n><Cmd>ToggleTerm<CR>', { desc = "Exit terminal & toggle (direct)" })

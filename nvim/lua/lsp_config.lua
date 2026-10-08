@@ -14,6 +14,8 @@ require("mason-lspconfig").setup({
     "texlab",
     "kotlin_lsp",
     "ts_ls",
+    "mlir",
+    "tablegen"
   },
   automatic_enable = true,
 })
