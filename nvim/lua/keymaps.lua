@@ -62,8 +62,6 @@ map('n', '<leader>r', show_registers, { desc = "Show registers" })
 
 -- map('n', '<leader>r', '<Cmd>registers<CR>', { desc = "Show registers" })
 
-
-
 map('n', '<leader>fs', ':Telescope session-lens<CR>', { desc = "Find Session" })
 -- This is the magic keymap to easily exit Terminal mode
 map('t', '<C-Space>', '<C-\\><C-n><Cmd>ToggleTerm<CR>', { desc = "Exit terminal & toggle (direct)" })
