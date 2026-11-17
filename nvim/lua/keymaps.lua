@@ -20,7 +20,50 @@ map('n', '<leader>tt', ':term<CR>', { desc = "Open Terminal Buffer" })
 
 map('n', '<C-Space>', '<Cmd>ToggleTerm<CR>', { desc = "Toggle floating terminal" })
 map('n', '<leader>mp', '<Cmd>MarkdownPreviewToggle<CR>', { desc = "Toggle Markdown Preview" })
-map('n', '<leader>r', '<Cmd>registers<CR>', { desc = "Show registers" })
+
+local function show_registers()
+    local lines = vim.split(vim.fn.execute("registers"), "\n", { trimempty = true })
+
+    local max_width = 0
+    for _, line in ipairs(lines) do
+        max_width = math.max(max_width, vim.fn.strdisplaywidth(line))
+    end
+
+    local width = math.min(math.max(max_width + 4, 30), vim.o.columns - 4)
+    local height = math.min(#lines, vim.o.lines - 4)
+
+    local buf = vim.api.nvim_create_buf(false, true)
+    vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+    vim.bo[buf].modifiable = false
+    vim.bo[buf].bufhidden = "wipe"
+
+    local win = vim.api.nvim_open_win(buf, true, {
+        relative = "editor",
+        width = width,
+        height = height,
+        row = math.floor((vim.o.lines - height) / 2),
+        col = math.floor((vim.o.columns - width) / 2),
+        style = "minimal",
+        border = "rounded",
+        title = " Registers ",
+        title_pos = "center",
+    })
+
+    for _, key in ipairs({ "q", "<Esc>" }) do
+        vim.keymap.set("n", key, function()
+            if vim.api.nvim_win_is_valid(win) then
+                vim.api.nvim_win_close(win, true)
+            end
+        end, { buffer = buf, silent = true })
+    end
+end
+
+map('n', '<leader>r', show_registers, { desc = "Show registers" })
+
+-- map('n', '<leader>r', '<Cmd>registers<CR>', { desc = "Show registers" })
+
+
+
 map('n', '<leader>fs', ':Telescope session-lens<CR>', { desc = "Find Session" })
 -- This is the magic keymap to easily exit Terminal mode
 map('t', '<C-Space>', '<C-\\><C-n><Cmd>ToggleTerm<CR>', { desc = "Exit terminal & toggle (direct)" })
